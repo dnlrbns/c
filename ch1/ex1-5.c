@@ -9,16 +9,16 @@ int main(void)
 	float fahr, celcius;
 	int lower, upper, step;
 	
-	lower = -50;
-	upper = 150;
-	step = 10;
+	lower = 0;
+	upper = 300;
+	step = 20;
 	
-	celcius = lower;
-	printf("Celcius | Fahrenheit\n");
+	fahr = upper;
+	printf("Fahrenheit | Celcius\n");
 	printf("--------------------\n");
-	while(celcius<=upper) {
-		fahr = celcius*1.8 +32;
-		printf("%6.0f | %11.1f\n", celcius, fahr);
-		celcius = celcius + step;
+	while(fahr>=lower) {
+		celcius = (5.0/9.0) * (fahr-32.0);
+		printf("%10.0f | %7.1f\n", fahr, celcius);
+		fahr = fahr - step;
 	}
 }
