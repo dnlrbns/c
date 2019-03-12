@@ -6,12 +6,13 @@
  */
  int main(void)
 {
-	int c, prev_c;
+	int c;
+	int prev_c = -1;
 
 	while((c = getchar()) != EOF) {
-		if(c == ' ') {}
-		else {
+		if(prev_c != ' ') {
 			putchar(c);
 		}
+		prev_c = c;
 	}
 }
