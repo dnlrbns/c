@@ -13,9 +13,12 @@ int main (void)
     nl = nw = 0;
     while ((c = getchar()) != EOF) {
         if (c == ' ' || c == '\n' || c == '\t') {
-           state = OUT;
+           if (state==IN) {
+           putchar('\n');
+           }
+            state = OUT;
         } else if (state == OUT) {
-            putchar('\n');
+            putchar(c);
             state = IN;
         } else {
             putchar(c);
