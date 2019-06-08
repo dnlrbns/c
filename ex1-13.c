@@ -10,15 +10,25 @@
 // word length frequeny
 int main (void)
 {
-    int c, state;
+    int c, state, char_count;
 
-    state = OUT;
+    //set the charater count variable to 0 pre program start.
+    //this is incrememnted every time the main while goes around and remains
+    //IN a word.
+    char_count = 0;
 
     //initialize all elements to zero. (missing assignments get 0 by default)
+    //after the main while gets OUT of a word the current `char_count' becomes
+    //an index to increment 
+    //note that hist goes up to 50. so if we get a longer than 50 char word...
+    //i guess we should test for that...
     int hist[50] = { 0 };
 
-    int char_count = 0;
+//TODO: test for words longer than 50 chars
+//TODO: use a linked list instead? 
 
+    //set the `state' to OUT. i.e. out of a word
+    state = OUT;
     while ((c = getchar()) != EOF) 
     {
         if (c == ' ' || c == '\n' || c == '\t') 
@@ -27,20 +37,16 @@ int main (void)
             {
                 hist[char_count]++;
                 char_count = 0;  
-                //            putchar('\n');
-
             }
             state = OUT;
         } 
         else if (state == OUT) 
         {
-            //          putchar(c);
             state = IN;
             char_count = 1;
         } 
         else 
         {
-            //            putchar(c);
             char_count++;
         }
     }
@@ -69,10 +75,14 @@ int main (void)
     {
         for (int i = 0; i < HEIGHT; i++)
         {
-            printf("%c", screen[i][j]);
+            printf("%c ", screen[i][j]);
         }
         printf("\n");
     }
-
+    printf("0 1 2 3 4 5 6 7 8 9 1 1 1 1 1 1 1 1 1 1 \
+2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 \
+4 4 4 4 4 4 4 4 4 4\n");
+    printf("                    0 1 2 3 4 5 6 7 8 9 \
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 \
+0 1 2 3 4 5 6 7 8 9\n"); 
 }
-
