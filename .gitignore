@@ -1,0 +1,8 @@
+ex1-14.dSYM/Contents/Info.plist
+.vscode
+*.dSYM/*
+*.dSYM
+.vscode/*
+*
+!/**/
+!*.*

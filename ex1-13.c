@@ -7,7 +7,7 @@
 #define HEIGHT 50
 
 // count the length of words and print a histogram of
-// word length frequeny
+// word length frequency
 int main (void)
 {
     int c, state, char_count;
@@ -25,56 +25,45 @@ int main (void)
     int hist[50] = { 0 };
 
 //TODO: test for words longer than 50 chars
-//TODO: use a linked list instead? 
 
     //set the `state' to OUT. i.e. out of a word
     state = OUT;
-    while ((c = getchar()) != EOF) 
-    {
-        if (c == ' ' || c == '\n' || c == '\t') 
-        {
-            if (state==IN) 
-            {
+
+    while ((c = getchar()) != EOF) {
+        if (c == ' ' || c == '\n' || c == '\t') {
+            if (state==IN) {
                 hist[char_count]++;
                 char_count = 0;  
             }
             state = OUT;
         } 
-        else if (state == OUT) 
-        {
+        else if (state == OUT) {
             state = IN;
             char_count = 1;
         } 
-        else 
-        {
+        else {
             char_count++;
         }
     }
     
     uint8_t screen[HEIGHT][WIDTH] = { 0 }; 
     
-    for (int i = 0; i < HEIGHT; i++)
-    {
-        for (int j = 0; j < WIDTH; j++)
-        {
+    for (int i = 0; i < HEIGHT; i++) {
+        for (int j = 0; j < WIDTH; j++) {
             screen[i][j] = 32;
         }
     }
 
     for (int i = 0; i < 50; i++) {
-        if (hist[i]>0)
-        {
+        if (hist[i]>0) {
             //printf("%02d:%03d ",i,hist[i]);
-            for (int j = 0; j<hist[i];j++)
-            {
+            for (int j = 0; j<hist[i];j++) {
                 screen[i][j] = 35;
             }
         }
     }
-    for (int j = WIDTH-1; j > -1;j--)
-    {
-        for (int i = 0; i < HEIGHT; i++)
-        {
+    for (int j = WIDTH-1; j > -1;j--) {
+        for (int i = 0; i < HEIGHT; i++) {
             printf("%c ", screen[i][j]);
         }
         printf("\n");
